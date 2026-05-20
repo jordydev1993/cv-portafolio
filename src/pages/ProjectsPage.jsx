@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import ProjectCard from '../components/ProjectCard';
 import proyectosData from '../data/proyectos.json';
 
-const ProjectsPage = ({ tema }) => {
+const ProjectsPage = () => {
   const [proyectos, setProyectos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -24,40 +23,45 @@ const ProjectsPage = ({ tema }) => {
 
   if (cargando) {
     return (
-      <div className="text-center py-5">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Cargando...</span>
-        </div>
-        <p className="mt-2 text-muted">Cargando proyectos...</p>
+      <div style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
+        <div style={{ width: 40, height: 40, border: '3px solid var(--color-border)', borderTopColor: 'var(--color-orange)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }}></div>
+        <p style={{ color: 'var(--color-gray)' }}>Cargando proyectos...</p>
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     );
   }
 
   if (error) {
-    return <div className="alert alert-danger">{error}</div>;
+    return (
+      <div className="pf-page">
+        <div className="pf-page__container">
+          <div style={{ background: 'rgba(231,76,60,0.1)', border: '1px solid rgba(231,76,60,0.3)', color: '#E74C3C', padding: '14px 20px', borderRadius: 8 }}>
+            {error}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h2 className="mb-4">Mis Proyectos</h2>
+    <div className="pf-page">
+      <div className="pf-page__container" style={{ maxWidth: 1200 }}>
+        <span className="pf-tag">Portafolio</span>
+        <h1 className="pf-page__title" style={{ marginBottom: 8 }}>Mis <span>Proyectos</span></h1>
+        <p className="pf-page__subtitle">Todos los proyectos en los que trabajé</p>
 
-      {proyectos.length === 0 ? (
-        <p className="text-muted">No hay proyectos para mostrar todavía.</p>
-      ) : (
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-          {proyectos.map(proyecto => (
-            <div className="col" key={proyecto.id}>
-              <ProjectCard proyecto={proyecto} />
-            </div>
-          ))}
-        </div>
-      )}
+        {proyectos.length === 0 ? (
+          <p style={{ color: 'var(--color-gray)' }}>No hay proyectos para mostrar todavía.</p>
+        ) : (
+          <div className="pf-projects-page__grid">
+            {proyectos.map(proyecto => (
+              <ProjectCard key={proyecto.id} proyecto={proyecto} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
-};
-
-ProjectsPage.propTypes = {
-  tema: PropTypes.string,
 };
 
 export default ProjectsPage;

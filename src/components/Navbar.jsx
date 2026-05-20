@@ -1,39 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Navbar = ({ tema, toggleTema }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav className={`navbar navbar-expand-lg ${tema === 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light border-bottom'}`}>
-      <div className="container-fluid">
-        <Link className="navbar-brand fw-bold" to="/">Mi Portafolio</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Inicio</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">Sobre mí</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/projects">Proyectos</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">Contacto</Link>
-            </li>
-          </ul>
+    <header className="pf-navbar">
+      <div className="pf-navbar__inner">
+        <Link className="pf-navbar__logo" to="/">Jordy<span>.</span></Link>
+
+        <ul className="pf-navbar__links">
+          <li><Link to="/">Inicio</Link></li>
+          <li><Link to="/about">Sobre mí</Link></li>
+          <li><Link to="/projects">Proyectos</Link></li>
+          <li><Link to="/contact">Contacto</Link></li>
+        </ul>
+
+        <div className="pf-navbar__actions">
+          <Link to="/contact" className="pf-btn pf-btn--orange">Contacto</Link>
           <button
-            className={`btn btn-sm ms-auto ${tema === 'dark' ? 'btn-outline-light' : 'btn-outline-dark'}`}
-            onClick={toggleTema}
+            className="pf-navbar__hamburger"
+            onClick={() => setMenuOpen(prev => !prev)}
+            aria-label="Abrir menú"
           >
-            {tema === 'light' ? '🌙 Oscuro' : '☀️ Claro'}
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
       </div>
-    </nav>
+
+      {menuOpen && (
+        <nav className="pf-navbar__mobile" onClick={() => setMenuOpen(false)}>
+          <Link to="/">Inicio</Link>
+          <Link to="/about">Sobre mí</Link>
+          <Link to="/projects">Proyectos</Link>
+          <Link to="/contact">Contacto</Link>
+        </nav>
+      )}
+    </header>
   );
 };
 

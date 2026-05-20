@@ -1,18 +1,34 @@
 [
   {
     "id": 1,
-    "nombre": "Mi Primer Sitio Web",
-    "descripcion": "Primer proyecto web creado con HTML, CSS y JavaScript. Un sitio personal con información de contacto y galería de imágenes.",
-    "imagen": "https://via.placeholder.com/400x250",
-    "tecnologias": ["HTML", "CSS", "JavaScript"],
-    "link": "https://github.com/tuusuario/mi-primer-sitio"
+    "nombre": "E-Commerce Website Design",
+    "descripcion": "Tienda online completa con carrito de compras, autenticación de usuarios y panel de administración.",
+    "imagen": "https://placehold.co/600x340/1a1a1a/FF6B00?text=E-Commerce",
+    "tecnologias": ["React", "Node.js", "MongoDB", "Tailwind"],
+    "link": "https://github.com/jordydev1993/cv-portafolio"
   },
   {
     "id": 2,
-    "nombre": "App de Tareas",
-    "descripcion": "Aplicación de lista de tareas con funcionalidad de agregar, eliminar y marcar como completadas. Desarrollada con React y localStorage.",
-    "imagen": "https://via.placeholder.com/400x250",
-    "tecnologias": ["React", "JavaScript", "Bootstrap"],
-    "link": "https://github.com/tuusuario/app-tareas"
+    "nombre": "Mobile App MVP Design",
+    "descripcion": "Diseño y desarrollo de una app móvil para gestión de tareas con notificaciones y sincronización en la nube.",
+    "imagen": "https://placehold.co/600x340/1a1a1a/FF6B00?text=Mobile+App",
+    "tecnologias": ["React Native", "Firebase", "Expo"],
+    "link": "https://github.com/jordydev1993/cv-portafolio"
+  },
+  {
+    "id": 3,
+    "nombre": "Branding & Logo Design",
+    "descripcion": "Identidad visual completa para una startup tech: logo, paleta de colores, tipografía y guía de marca.",
+    "imagen": "https://placehold.co/600x340/1a1a1a/FF6B00?text=Branding",
+    "tecnologias": ["Figma", "Illustrator", "Photoshop"],
+    "link": "https://github.com/jordydev1993/cv-portafolio"
+  },
+  {
+    "id": 4,
+    "nombre": "No-Code Website Development",
+    "descripcion": "Landing page de alto rendimiento desarrollada con herramientas no-code y optimizada para SEO y conversión.",
+    "imagen": "https://placehold.co/600x340/1a1a1a/FF6B00?text=No-Code",
+    "tecnologias": ["Webflow", "Framer", "SEO"],
+    "link": "https://github.com/jordydev1993/cv-portafolio"
   }
 ]

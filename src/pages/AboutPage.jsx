@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import SkillBadge from '../components/SkillBadge';
 
 const experiencia = [
@@ -16,80 +15,73 @@ const habilidadesFront = ['React', 'JavaScript', 'HTML5', 'CSS3', 'Bootstrap', '
 const habilidadesBack = ['Node.js', 'Express', 'Python', 'SQL'];
 const habilidadesHerramientas = ['Git', 'GitHub', 'VS Code', 'Figma'];
 
-const AboutPage = ({ tema }) => {
+const AboutPage = () => {
   const [mostrarEducacion, setMostrarEducacion] = useState(true);
 
   return (
-    <div>
-      <section className="mb-5">
-        <h2 className="mb-3">Sobre mí</h2>
-        <p className="fs-5">
-          Soy un desarrollador frontend apasionado por crear experiencias web modernas, rápidas y accesibles.
-          Me especializo en React y el ecosistema de JavaScript. Siempre estoy aprendiendo nuevas tecnologías
-          y buscando proyectos que desafíen mis habilidades.
-        </p>
-      </section>
+    <div className="pf-page">
+      <div className="pf-page__container">
+        <span className="pf-tag">Sobre mí</span>
+        <h1 className="pf-page__title">Jordy <span>Huansi</span></h1>
+        <p className="pf-page__subtitle">Desarrollador Frontend · Estudiante de Sistemas</p>
 
-      <section className="mb-5">
-        <h2 className="mb-3">Experiencia</h2>
-        {experiencia.map(exp => (
-          <div key={exp.id} className={`card mb-3 ${tema === 'dark' ? 'bg-secondary bg-opacity-25 border-secondary' : ''}`}>
-            <div className="card-body">
-              <h5 className="card-title mb-1">{exp.puesto}</h5>
-              <h6 className="card-subtitle text-muted mb-2">{exp.empresa} · {exp.periodo}</h6>
-              <p className="card-text">{exp.descripcion}</p>
+        <div className="pf-page__section">
+          <h3>Quién soy</h3>
+          <p style={{ color: 'var(--color-gray-light)', lineHeight: 1.8, fontSize: 16 }}>
+            Soy un desarrollador frontend apasionado por crear experiencias web modernas, rápidas y accesibles.
+            Me especializo en React y el ecosistema de JavaScript. Siempre estoy aprendiendo nuevas tecnologías
+            y buscando proyectos que desafíen mis habilidades.
+          </p>
+        </div>
+
+        <div className="pf-page__section">
+          <h3>Experiencia</h3>
+          {experiencia.map(exp => (
+            <div key={exp.id} className="pf-exp-card">
+              <p className="pf-exp-card__title">{exp.puesto}</p>
+              <p className="pf-exp-card__sub">{exp.empresa} · {exp.periodo}</p>
+              <p className="pf-exp-card__desc">{exp.descripcion}</p>
             </div>
-          </div>
-        ))}
-      </section>
-
-      <section className="mb-5">
-        <div className="d-flex align-items-center gap-3 mb-3">
-          <h2 className="mb-0">Educación</h2>
-          <button
-            className="btn btn-sm btn-outline-secondary"
-            onClick={() => setMostrarEducacion(prev => !prev)}
-          >
-            {mostrarEducacion ? 'Ocultar' : 'Mostrar'}
-          </button>
+          ))}
         </div>
-        {mostrarEducacion && educacion.map(edu => (
-          <div key={edu.id} className={`card mb-3 ${tema === 'dark' ? 'bg-secondary bg-opacity-25 border-secondary' : ''}`}>
-            <div className="card-body">
-              <h5 className="card-title mb-1">{edu.titulo}</h5>
-              <h6 className="card-subtitle text-muted">{edu.institucion} · {edu.periodo}</h6>
+
+        <div className="pf-page__section">
+          <h3 style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            Educación
+            <button
+              className="pf-btn pf-btn--outline"
+              style={{ padding: '6px 16px', fontSize: 13 }}
+              onClick={() => setMostrarEducacion(prev => !prev)}
+            >
+              {mostrarEducacion ? 'Ocultar' : 'Mostrar'}
+            </button>
+          </h3>
+          {mostrarEducacion && educacion.map(edu => (
+            <div key={edu.id} className="pf-exp-card">
+              <p className="pf-exp-card__title">{edu.titulo}</p>
+              <p className="pf-exp-card__sub">{edu.institucion} · {edu.periodo}</p>
             </div>
-          </div>
-        ))}
-      </section>
+          ))}
+        </div>
 
-      <section className="mb-5">
-        <h2 className="mb-3">Habilidades</h2>
-        <h6 className="text-muted mb-2">Frontend</h6>
-        <div className="mb-3">
-          {habilidadesFront.map((hab, i) => (
-            <SkillBadge key={i} nombre={hab} variante="primary" />
-          ))}
+        <div className="pf-page__section">
+          <h3>Habilidades</h3>
+          <p style={{ fontSize: 13, color: 'var(--color-gray)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Frontend</p>
+          <div className="pf-skills-grid" style={{ marginBottom: 20 }}>
+            {habilidadesFront.map((hab, i) => <SkillBadge key={i} nombre={hab} />)}
+          </div>
+          <p style={{ fontSize: 13, color: 'var(--color-gray)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Backend</p>
+          <div className="pf-skills-grid" style={{ marginBottom: 20 }}>
+            {habilidadesBack.map((hab, i) => <SkillBadge key={i} nombre={hab} />)}
+          </div>
+          <p style={{ fontSize: 13, color: 'var(--color-gray)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Herramientas</p>
+          <div className="pf-skills-grid">
+            {habilidadesHerramientas.map((hab, i) => <SkillBadge key={i} nombre={hab} />)}
+          </div>
         </div>
-        <h6 className="text-muted mb-2">Backend</h6>
-        <div className="mb-3">
-          {habilidadesBack.map((hab, i) => (
-            <SkillBadge key={i} nombre={hab} variante="success" />
-          ))}
-        </div>
-        <h6 className="text-muted mb-2">Herramientas</h6>
-        <div>
-          {habilidadesHerramientas.map((hab, i) => (
-            <SkillBadge key={i} nombre={hab} variante="secondary" />
-          ))}
-        </div>
-      </section>
+      </div>
     </div>
   );
-};
-
-AboutPage.propTypes = {
-  tema: PropTypes.string,
 };
 
 export default AboutPage;
