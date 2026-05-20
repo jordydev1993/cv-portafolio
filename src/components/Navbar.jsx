@@ -14,7 +14,6 @@ const Navbar = ({ tema, toggleTema }) => {
           <li><Link to="/">Inicio</Link></li>
           <li><Link to="/about">Sobre mí</Link></li>
           <li><Link to="/projects">Proyectos</Link></li>
-          <li><Link to="/contact">Contacto</Link></li>
         </ul>
 
         <div className="pf-navbar__actions">
